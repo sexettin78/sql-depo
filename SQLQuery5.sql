@@ -1,0 +1,1 @@
+select ad,soyad from kisi where ad like 'F[u]%'

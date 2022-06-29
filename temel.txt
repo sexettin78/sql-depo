@@ -1,0 +1,65 @@
+select * from kisi 
+yazarak kisi tablosundaki tüm elemanları çağırabiliriz
+
+select ad,soyad from kisi
+yazarak kisi tablosundaki ad ve soyad'ı çağırabiliriz
+
+koşullu işlem gerçekleştirmek için:
+Select * from kisi Where soyad='d'
+sadece soyadı d olanları çağırdı TEK TIRNAK KULLAN
+
+SORGU YAZARKEN SADECE İSTEDİĞİN SATIRIN ÇALIŞMASINI İSTERSEN SATIRI SEÇİP F5'E BAS
+
+birden fazla koşul için and or kullanabiliriz mesela;
+select * from kisi where ad='furkan' and soyad='d' 
+hem adı furkan olup hemde soyadı d olanları çağırdı
+
+select * from kisi where soyad is null 
+soyad değeri boş olanları çağırdık
+
+boş olmayanları getirmek için ise
+is not null
+kullanılır
+
+
+select * from kisi where yas between 1 and 20
+yaşı 1 ile 20 arasında olanları çağırdık
+
+
+a% ilk karakteri a olanlar gelecektir
+%a son karakteri a olanlar gelecektir
+%a% başında sonunda ya da içinde a olanlar gelecektir
+_a ilk harf ne olursa olsun sonu a ile bitenler 
+[de]%  d veya e ile başlayan tüm kayıtlar
+[D-E]abc abc ile biten, ilk harfi d'den e'ye kadar olan kayıtlar
+A[^B]% A ile başlayan, ikinci harfi b olmayan kayıtlar
+
+
+select ad,soyad from kisi where soyad like 'de%'
+burada soyadı de ile başlayanları listelemesini istedik
+
+ASC: A'dan Z'ye sıralama (küçükten büyüğe)
+DESC: Z'den A'ya sıralama (büyükten küçüğe)
+select * from kisi order by AD desc  ======> yaparsak ad kolonuna göre Z'den A'ya sıralama yapılır. 
+Standart olarak asc sıralama yapılır 
+
+
+Ad kolonunda aynı değerler varsa soyad a göre asc sıralar
+select * from kisi order by AD asc, Soyad asc
+
+-Alias-
+takma ad diyebiliriz. sadece görünüşte kolonların takma adlarını değiştirir. alias kısaltımı as
+select Ad as KisiAd, Soyad as KisiSoyad from kisi 
+yukarıdaki sorguda Ad kolonunun takma adını KisiAd, Soyad kolonunun takma adını ise KisiSoyad olarak değiştirdik. sonda da from kisi diyerek kisi tablomuzda işlem yapacağımızı belirttik.
+eğer ki takma ad içerisinde boşluk tanımlamak istersek [] içerisine yazarız. örneğin: Soyad as [kisi soyad]
+
+
+
+
+
+
+
+
+
+
+

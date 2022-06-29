@@ -1,0 +1,15 @@
+VERİTABANI SİLMEK İÇİN
+Drop Database VERITABANI_ADI
+eğer veritabanı kullanılıyorsa hata alırsın. bunu düzeltmek için;
+"
+USE master
+GO
+ALTER DATABASE VERITABANI_ADI SET SINGLE_USER WITH ROLLBACK IMMEDIATE
+GO
+USE master 
+GO
+DROP DATABASE VERITABANI_ADI
+GO
+"
+
+
