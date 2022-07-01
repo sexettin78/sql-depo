@@ -1,0 +1,1 @@
+select cinsiyet, COUNT(*) AS ToplamCinsiyet from sarkicilar where On_uzerinden_degerlendirme>8 group by cinsiyet 

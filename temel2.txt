@@ -1,0 +1,67 @@
+coalesce/is null : kolonlarımızda değer olmadığı zaman null değeri görünmesi yerine kendi istediğimiz değerin görünmesini coalesce komutu ile sağlayabiliriz. örnek sorgu:
+select ad, Coalesce(Soyad,'Soyad Yok') as KisiSoyad from kisi --burada kişinin soyad değeri girilmediyse null yazmak yerine Soyad Yok yazacak
+aynı işlemi is null ile de gerçekleştirebiliriz. Coalesce yerine ISNULL yazmamız yeterli.
+
+nullif: tablomuzda yer alan kolonlardan ikisinin eşit olma durumunda null, değer atamak için kullanılır. örnek sorgu üzerinden anlatayım:
+insert into kisi values ('Furkan','Furkan') --burada ad ve soyad kısmına aynı değerler girildiği için soyad kısmına null girilecek
+bu yöntemi kullanarak aynı değere sahip olmayan kayıt sayısını hesaplayabiliriz. Select Count(NullIF(Ad,Soyad)) from kisi yazınca tablo ekranında yazacaktır.
+
+top : tabloda kayıtların kaç tanesinin ya da % kaçının görüntüleneceğini gösterir. : Select TOP 3 * from kisi yazarsak 3 kayıtı gösterecektir.
+kayıtların %21'ini göstermek için select TOP 25 Percent * from kisi 
+sondan sıralamak için: select TOP 3 * from kisi Order by ID DESC yazarsak son 3 kayıtı gösterir
+
+group-by : tablomuzda bulunan verileri bir veya birden fazla kolona göre gruplandırmak için kullanılır. Çoğunlukla matematiksel işlem için kullanılır.
+Select Ad  from sarkicilar group by rapci --yazdığımız zaman, sarkicilar adlı sql tablomuzdaki şarkıcıların adlarını, rapci diye bir tabloda sıralayacaktır
+select ad, AVG(On_uzerinden_degerlendirme) as OrtalamaPuan from sarkicilar Group by ad  --rapcilerin adlarına göre ortalama puanı yazdırdık
+select cinsiyet, AVG(On_uzerinden_degerlendirme) as OrtalamaPuan from sarkicilar Group by cinsiyet --erkek cinsiyetindeki rapcilerin ortalama puanını aldık
+select cinsiyet, COUNT(*) AS ToplamCinsiyet from sarkicilar group by cinsiyet --erkek ve kadın cinsiyetinde kaç kişi olduğunu gösterir
+burada where de kullanılabilir. örneğin select cinsiyet, COUNT(*) AS ToplamCinsiyet from sarkicilar where On_uzerinden_degerlendirme>8 group by cinsiyet --dersek sadece ortalama puanı 8'den yüksek olanların sayısını gösterir
+
+having: where'ye benzer. aralarındaki fark; where, group by öncesinde yapılır ve bu koşula göre group by yapılırken having, oluşturulmuş group by üzerinden koşul yapısını çağırır
+
+distinct : benzer kayıtları bulmak için kullanılır. kaç farklı bilgi olduğunu kontrol etmek için kullanabiliriz. örneğin sarkicilar tablomuzda kaç tane şarkıcı olduğunu öğrenmek için:
+select Distinct Ad From sarkicilar --yazmamız yeterlidir
+
+union/union all : iki veya daha fazla tablonun ortak veri tipli kolonlarını birleştirir
+Select ad,  Cinsiyet from kisi
+union
+Select ad, cinsiyet from sarkicilar
+--yukarıda 2 tablomuzu birleştirdik
+union'da dikkat etmemiz gereken husus, yazılan kolonların sıralamasının aynı tür veri tipinde olmasıdır
+union all farkı, unionda aynı değere sahip verileri birleştirirken 2 değer aynı ise bunları 1 değer olarak yazar fakat union all ikisini de yazar.
+
+intersect : iki tablo arasındaki ortak kayıtları gösterir.
+select ad from kisi
+Intersect
+select Ad from sarkicilar
+--şeklinde kullanılır
+
+except : intersect'in tam tersidir. iki tablo arasında ortak olmayan kayıtları gösterir.
+select ad from kisi
+except
+select Ad from sarkicilar
+--şeklinde kullanılır
+
+join : veri karşılığını getirmek için kullanılır. örneğin bizim cinsiyet ve kisi adlı 2 tane tablomuz vardı. bu tablolardan kisi tablosunun içerisinde CinsiyetId diye biir değerimiz var. kişilerin cinsiyetini de bu şekilde 1 ve 2 şeklinde ayarlamıştık. 1(kadın) 2(erkek) şeklinde. bu verileri bi zaman sonra okuması sıkıntı çıkarabilir çünkü erkek kadın yerine 1, 2 yazıyor. burada join devreye giriyor. 
+select kisi.ad,  cinsiyet.Cinsiyet
+from kisi
+Join cinsiyet on kisi.CinsiyetID=cinsiyet.ID
+--yazdığımızda cinsiyet kısmında 1, 2 yazmak yerine erkek veya kadın yazacaktır. 
+burada join kısmında diyoruz ki, cinsiyetid yerine, cinsiyet tablomuzda o id'e denk gelecek değeri yaz
+
+left outer join : tabloda eğer null değerimiz varsa join çalışmaz. join yerine left outer join yazmak yeterli
+
+left join : sağdaki parametredeki tablo, soldakine eklenir. yani soldaki tabloda olan bilgi sağdakinde yoksa bile sonuç içerisinde gösterilir. null değerleri de gösterilir. 
+
+right join : soldaki parametredeki tablo, sağdakine eklenir. 
+
+full join : hem sağ hem soldaki tablonun tüm satırları listelenir.
+
+cross join : iki ya da daha fazla tabloyu çapraz olarak birleştirir. ilk tablodaki her bir satır için ikinci tablodaki her satır sonuç olarak döner
+select kisi.ad, cinsiyet.Cinsiyet
+from kisi CROSS JOIN cinsiyet
+burada, test ederseniz çapraz dağıttığını göreceksiniz. cinsiyetleri dağıtır
+
+
+
+

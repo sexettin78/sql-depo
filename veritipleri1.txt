@@ -1,0 +1,35 @@
+bit : 1,0 değerlerini alır. 
+tinyint : 0-255 arası değer alır. tam sayı 
+smallint : -32.768 ile +32.767 arası değer alır. tam sayı
+int : -2 milyar ile +2 milyar arası değer alır. tam sayı
+bigint : -9.xxx.xxx.xxx.xxx.xxx ile +9.xxx.xxx.xxx.xxx.xxx arası değer alır. tam sayı
+smallmoney : -214.748 ile +214.748 arası ondalıklı değer alır
+money : büyük ondalıklı değerler için kullanılır
+float : hassas değerler içeren ondalıklı sayılar için kullanılır 
+real : hassas değerler içeren ondalıklı sayılar için kullanılır 
+
+datetime : 1 ocak 1753 ile sonsuz zaman arası değer alır.
+datetime2 : milattan sonraki tüm zaman değerlerini alır
+smalldatetime : 1 ocak 1970 - 31 aralık 2079
+date : tarihi tutar. tüm tarih değerlerini alır
+time : saat bilgisini tutar
+datetimeoffset : bölgesel saat farklılıklarının da tutulduğu veri tipidir
+
+char : en fazla 8000 karakter alır. unicode desteği olmayan karakterler tutar
+varchar : en fazla 8000 karakter alır. unicode desteği olmayan karakterler tutar
+text : en fazla 2.147.483.647 karakter alır. unicode desteği olmayan karakterler tutar
+nchar : en fazla 4000 karakter. unicode desteği olan karakterleri de tutar
+nvarchar : en fazla 4000 karakter
+ntext : en fazla 2.147.483.647 karakter alır. unicode desteği olan karakterleri de tutar
+
+binary : en fazla 8000 byte. gireceğimiz byte miktarı aynı olduğu durumlarda kullanılır
+varbinary : en fazla 8000 byte. gireceğimiz byte miktarı değişken olduğunda kullanılır
+varbinary(max) : 2 üzeri 31 yani 2 gb veri alır
+image : 2.147.483.647 byte
+
+xml : xml veri saklamak için kullanılır
+sql_variant : en fazla 8000 byte. resim, karakter sayı girilebilir
+geometry : 2 boyutlu kordinat çiziminde noktai doğru, çember, çokgen gibi geometrik cisimlerin x ve y eksenindeki koordinat bilgilerini tutar
+geography : objelerin geodetik düzlemde ifade eden enlemsel ve boylamsal koordinatlarını tutar
+hierarchyid : hiyerarşik yapılar için kullanılır
+uniqueidentifier : guid tipindeki verileri tutar
