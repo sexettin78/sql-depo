@@ -1,0 +1,39 @@
+TABLOMUZUN ADI MAİN OLSUN
+
+select * from main 
+yazarak main tablosundaki tüm elemanları çağırabiliriz
+
+select ad,soyad from main
+yazarak main tablosundaki ad ve soyad'ı çağırabiliriz
+
+koşullu işlem gerçekleştirmek için:
+Select * from main Where soyad='d'
+sadece soyadı d olanları çağırdı TEK TIRNAK KULLAN
+
+select * from main where uyari between 1 and 20
+uyarısı 1 ile 20 arasında olanları çağırdık
+
+SELECT * FROM main WHERE uyari < 5
+uyarısı 5 ten kucuk olanları çağırır
+
+Select TOP 3 * from main yazarsak 3 kayıtı gösterecektir.
+kayıtların %21'ini göstermek için select TOP 25 Percent * from main 
+sondan sıralamak için: select TOP 3 * from main Order by ID DESC yazarsak son 3 kayıtı gösterir
+BAŞTAN SIRALAMAK İÇİN = DESC YERİNE ASC YAZ
+
+select ad,soyad from main where soyad like 'de%'
+burada soyadı de ile başlayanları listelemesini istedik
+
+ASC: A'dan Z'ye sıralama (küçükten büyüğe)
+DESC: Z'den A'ya sıralama (büyükten küçüğe)
+select * from main order by AD desc  ======> yaparsak ad kolonuna göre Z'den A'ya sıralama yapılır. 
+Standart olarak asc sıralama yapılır 
+
+a% ilk karakteri a olanlar gelecektir
+%a son karakteri a olanlar gelecektir
+%a% başında sonunda ya da içinde a olanlar gelecektir
+_a ilk harf ne olursa olsun sonu a ile bitenler 
+[de]%  d veya e ile başlayan tüm kayıtlar
+[D-E]abc abc ile biten, ilk harfi d'den e'ye kadar olan kayıtlar
+A[^B]% A ile başlayan, ikinci harfi b olmayan kayıtlar
+ÖRNEK KULLANIM:SELECT * FROM main WHERE ad like 'm%'            YANDA YAZDIĞIM KOD, İSMİ M İLE BAŞLAYANLARI CAĞIRIR SADECE
