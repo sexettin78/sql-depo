@@ -42,4 +42,3 @@ insert into kisi values ('reyyan','değirmenciler',1,1)
 
 
 
-
