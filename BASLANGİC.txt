@@ -24,7 +24,6 @@ Create table kisi
 
 
 
-
 --kayıtları ekle
 insert into cinsiyet values ('kadın')
 insert into cinsiyet values ('erkek')
@@ -35,7 +34,6 @@ insert into kisi values ('furkan','değirmenciler',2,20)
 insert into kisi values ('ahmet','sorgu',2,25)
 insert into kisi values ('mehmet','çınar',2,20)
 insert into kisi values ('reyyan','değirmenciler',3,3)
-
 
 
 
