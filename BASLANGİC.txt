@@ -24,7 +24,6 @@ Create table kisi
 
 
 
-
 --kayıtları ekle
 insert into cinsiyet values ('kadın')
 insert into cinsiyet values ('erkek')
